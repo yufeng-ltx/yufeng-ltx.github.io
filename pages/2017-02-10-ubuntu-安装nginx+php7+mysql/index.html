@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ubuntu 安装nginx+php7+mysql | yufeng-ltx个人站点</title>
+    <meta name="generator" content="VuePress 1.5.2">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon-152x152.png">
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#3eaf7c">
+    <meta name="description" content="专注于前端开发">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileImage" content="/icons/msapplication-icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#000000">
+    <link rel="preload" href="/assets/css/0.styles.ad8a79a6.css" as="style"><link rel="preload" href="/assets/js/app.398f7d92.js" as="script"><link rel="preload" href="/assets/js/2.9c282f9a.js" as="script"><link rel="preload" href="/assets/js/8.a04400b5.js" as="script"><link rel="prefetch" href="/assets/js/10.541b04c0.js"><link rel="prefetch" href="/assets/js/11.f046b2ce.js"><link rel="prefetch" href="/assets/js/12.9f6f72e7.js"><link rel="prefetch" href="/assets/js/13.19ddc3ae.js"><link rel="prefetch" href="/assets/js/14.4d4a37aa.js"><link rel="prefetch" href="/assets/js/15.d06fdeea.js"><link rel="prefetch" href="/assets/js/3.32cba5cd.js"><link rel="prefetch" href="/assets/js/4.67cb4dc6.js"><link rel="prefetch" href="/assets/js/5.891e12fc.js"><link rel="prefetch" href="/assets/js/6.0d9e5e50.js"><link rel="prefetch" href="/assets/js/7.4bbb118b.js"><link rel="prefetch" href="/assets/js/9.ac5527a0.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ad8a79a6.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">yufeng-ltx个人站点</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/categories/" class="nav-link">分类</a></div><div class="nav-item"><a href="/tags/" class="nav-link">标签</a></div><div class="nav-item"><a href="/archives/" class="nav-link">归档</a></div><div class="nav-item"><a href="https://github.com/yufeng-ltx" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar" style="display:none;"><div class="blogger"><img src="/images/avatars.png"> <div class="blogger-info"><h3>yufeng-ltx</h3> <span>
+        专注前端开发
+      </span></div></div> <nav class="nav-links"><div class="nav-item"><a href="/categories/" class="nav-link">分类</a></div><div class="nav-item"><a href="/tags/" class="nav-link">标签</a></div><div class="nav-item"><a href="/archives/" class="nav-link">归档</a></div><div class="nav-item"><a href="https://github.com/yufeng-ltx" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>ubuntu 安装nginx+php7+mysql</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/pages/2017-02-10-ubuntu-安装nginx+php7+mysql/#安装nginx" class="sidebar-link">安装nginx</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/pages/2017-02-10-ubuntu-安装nginx+php7+mysql/#安装php7" class="sidebar-link">安装php7</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/pages/2017-02-10-ubuntu-安装nginx+php7+mysql/#安装mysql" class="sidebar-link">安装mysql</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <div><main class="page"> <div class="theme-vdoing-wrapper"><div class="articleInfo-wrap" data-v-14888ed5><div class="articleInfo" data-v-14888ed5><!----> <div class="info" data-v-14888ed5><div title="作者" class="author iconfont icon-touxiang" data-v-14888ed5><a href="https://github.com/yufeng-ltx" target="_blank" title="作者" class="beLink" data-v-14888ed5>yufeng-ltx</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-14888ed5><a href="javascript:;" data-v-14888ed5>2017-02-10</a></div> <div title="分类" class="date iconfont icon-wenjian" data-v-14888ed5><a href="/categories/?category=%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0" data-v-14888ed5>
+          编程学习
+        </a></div></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABGpJREFUSA3tVVtoXFUU3fvOI53UlmCaKIFmwEhsE7QK0ipFEdHEKpXaZGrp15SINsXUWvBDpBgQRKi0+KKoFeJHfZA+ED9KKoIU2gYD9UejTW4rVIzm0VSTziPzuNu1z507dibTTjL4U/DAzLn3nL3X2o91ziX6f9wMFdh6Jvbm9nNSV0msViVO6tN1Rm7NMu2OpeJ9lWBUTDxrJbYTS0hInuwciu9eLHlFxCLCZEk3MegsJmZ5K/JD6t7FkFdEvGUo1g7qJoG3MHImqRIn8/nzY1K9UPKKiJmtnUqHVE3Gbuay6vJE/N2FEmuxFjW2nUuE0yQXRRxLiTUAzs36zhZvOXJPdX850EVnnLZkB8prodQoM5JGj7Xk2mvC7JB8tG04Ef5PiXtG0UtxupRQSfTnBoCy554x18yJHI6I+G5Eru4LHmPJZEQsrvPUbMiA8G/WgMK7w7I+ez7++o2ANfbrjvaOl1tFMs+htG3IrZH9/hDX1Pr8Tc0UvH8tcX29KzAgIGcEkINyW5BF9x891hw6VYqgJHEk0huccS7vh3C6gTiODL+26huuBtbct8eZnqLML8PkxGYpuPZBqtqwkSjgc4mB5gbgig5i+y0UDK35LMxXisn9xQtK+nd26gTIHsHe/oblK/b29fUmN/8Y+9jAQrnBp56m1LcDlDp9irKTExSKduXJVWSqdBMA08pEJnEIOB3FPPMybu/oeV8zFeYN3xx576Q6RH+VmplE4ncQV5v+5rzSoyOU7PuEAg8g803PwBJ0CExno/jcMbN8tONYeOmHiuUNryvm3fRUy4tMPVLdAGkUhNWuggGrJcXPv+ouCjz0MKUHz1J2/E8IC9nqTabcxgaBYM0hPhD5Y65FsbxRQKxCQrDjDctW7PUM3HuZunFyifSAqEfuzCp48Il24luWUWZoyJCaPR82jE0+kFA643wRFVni4RYSq3ohJO2pZ7B5dO4xkDWbEpossJPLSrPjYID8rS2UHTlvyNxqIGsg674XJJ7vnh5L7PNwC4hh2sjCI96mzszOTpxLF0T7l88Yz7lAuK6OnL8gXLOnTvpzSb22YG8W7us3jSebFHeeqnXRG1vt+MoUM84LQIBmMsCTAcOauTh0T0l0neQK7m2bLMt2mGxU3HYssS0J2cdv5wljlPsrIuZLAG/2DOZIXgCYT8uMGZN+e2kSirfxZOPCsC0f24nTZzspnVn9VePS1Z5vubmAGGXG8ZFno9Hel0yfA5ZPhF7Dh972BQJ2qCpgH67lmWtBYbvk6sz02wjky2vXyz0XErP/kFB619js1BtwfOV4OPRqOQBjy3Qbk18vigUPPSD5ceHnwck7W9bhAqZdd7SuG7w4/P2F/GaJh8c7e9qgow+Q7cGBo+98WsLkuktFqiZabtXuQTu/Y5ETbR0v7tNSFnvrmu6pjdoan2KjMu8q/Hmj1EfCO2ZGfEIbIXKUlw8qaX9/b2oeSJmFksSeT/Fn0V3nSypChh4Gjh74ybO9aeZ/AN2dwciu2/MhAAAAAElFTkSuQmCC">
+          ubuntu 安装nginx+php7+mysql
+        </h1> <div class="theme-vdoing-content content__default"><p>升级php7，在ubuntu服务器上折腾了半天，这里做一下安装总结。</p> <h2 id="安装nginx"><a href="#安装nginx" class="header-anchor">#</a> 安装nginx</h2> <p>去nginx官网下载最新版本的tar包</p> <p>地址：<a href="http://nginx.org/en/download.html" target="_blank" rel="noopener noreferrer">http://nginx.org/en/download.html<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p>先在 usr/local/目录下建 nginx文件夹</p> <div class="language- extra-class"><pre><code>cd /usr/local/nginx
+</code></pre></div><p>下载：</p> <div class="language- extra-class"><pre><code>wget http://nginx.org/download/nginx-1.10.3.tar.gz
+</code></pre></div><p>解压：</p> <div class="language- extra-class"><pre><code>tar -xvf  nginx-1.10.3.tar.gz
+</code></pre></div><p>配置，这里prefix是指定安装目录</p> <div class="language- extra-class"><pre><code>./configure --prefix=/usr/local/nginx/
+</code></pre></div><p>编译</p> <div class="language- extra-class"><pre><code>make &amp;&amp; make install
+</code></pre></div><p>以上就已经成功安装了nginx</p> <p>下面是配置nignx.conf，进入目录</p> <div class="language- extra-class"><pre><code>cd /usr/local/nginx/conf
+</code></pre></div><p>编辑nginx.conf文件</p> <div class="language- extra-class"><pre><code>vi nginx.conf
+</code></pre></div><p>这里列一段php-fpm 的配置代码：</p> <div class="language-R extra-class"><pre class="language-r"><code>server <span class="token punctuation">{</span>
+    listen <span class="token number">80</span><span class="token punctuation">;</span>
+    server_name test.com<span class="token punctuation">;</span>
+    location <span class="token operator">/</span> <span class="token punctuation">{</span>
+        root <span class="token operator">/</span>www<span class="token operator">/</span><span class="token punctuation">;</span>
+        index index.php index.html index.htm<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    location <span class="token operator">~</span><span class="token operator">*</span> \.php<span class="token operator">$</span> <span class="token punctuation">{</span>
+        root <span class="token operator">/</span>www<span class="token operator">/</span><span class="token punctuation">;</span>
+        fastcgi_index index.php<span class="token punctuation">;</span>
+        fastcgi_pass <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">9000</span><span class="token punctuation">;</span>
+        include fastcgi_params<span class="token punctuation">;</span>
+        fastcgi_param SCRIPT_FILENAME <span class="token operator">$</span>document_root<span class="token operator">$</span>fastcgi_script_name<span class="token punctuation">;</span>
+        fastcgi_param SCRIPT_NAME <span class="token operator">$</span>fastcgi_script_name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>软链nginx到bin目录下</p> <div class="language- extra-class"><pre><code>ln /usr/local/nginx/sbin/nginx /usr/local/bin
+</code></pre></div><p>就可以查看nginx的版本</p> <div class="language- extra-class"><pre><code>nginx -v
+</code></pre></div><h2 id="安装php7"><a href="#安装php7" class="header-anchor">#</a> 安装php7</h2> <p>先去php官网下载最新版的tar包</p> <p><a href="http://php.net/downloads.php" target="_blank" rel="noopener noreferrer">http://php.net/downloads.php<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p>在/usr/local/目录下创建php7文件夹</p> <div class="language- extra-class"><pre><code>cd /usr/local/php7
+</code></pre></div><p>下载php7</p> <div class="language- extra-class"><pre><code>wget http://cn2.php.net/distributions/php-7.1.2.tar.gz
+</code></pre></div><p>解压</p> <div class="language- extra-class"><pre><code>tar -xvf php-7.1.2.tar.gz
+</code></pre></div><p>进入安装目录后，准备配置configure，安装一些必要的库</p> <div class="language- extra-class"><pre><code>./configure \
+--prefix=/usr/local/php7 \
+--enable-opcache \
+--enable-mysqlnd \
+--with-mysqli \
+--with-pdo-mysql \
+--with-mysql-sock=/var/run/mysqld/mysqld.sock \
+--enable-fpm \
+--enable-static \
+--enable-inline-optimization \
+--enable-sockets \
+--enable-wddx \
+--enable-zip \
+--enable-calendar \
+--with-iconv \
+--with-openssl \
+--enable-bcmath \
+--enable-soap \
+--with-xmlrpc \
+--enable-mbstring \
+--enable-shared \
+--with-curl \
+--enable-xml \
+--enable-ftp \
+--with-mhash \
+--enable-shmop \
+--enable-sysvsem \
+--enable-mbregex \
+--enable-pcntl \
+--enable-session \
+--with-gettext \
+--disable-ipv6 \
+--disable-debug \
+--disable-maintainer-zts \
+--disable-rpath \
+--with-zlib \
+--with-freetype-dir \
+--with-gd \
+--with-jpeg-dir \
+--with-png-dir \
+--enable-gd-native-ttf \
+--enable-gd-jis-conv \
+--disable-fileinfo \
+--with-mcrypt \
+</code></pre></div><p>上面配置的内容，我这里解释一下。</p> <p><em><code>–enable-fpm</code>   //开启fpm，这是一个PHPFastCGI管理器，让php代码能够在nginx下运行。</em></p> <p><code>–with-mysql-sock=/var/run/mysqld/mysqld.sock</code></p> <p>*//这一段是指定mysqld.sock的位置，如果不指定的话，安装完，还不能直接访问mysql数据，需要在php.ini里面指定pdo_mysql.default_socket=。</p> <p><em><code>–disable-fileinfo</code>   //这段是为了防止服务器内存不够的出错。</em>*</p> <p>正常来说，上面的代码再服务器上运行后，会报错，因为会提示找不到某些库。</p> <p>这个时候，就要根据报错的内容个，逐一安装啦。。。</p> <p>安装这些必要库的方法也比较简单，都是去官网找tar包，然后./configure ,make &amp;&amp; make install 来安装。默认情况下，都是安装在/usr/local目录下。如果要指定安装目录，也可以在 ./configure 指定 –prefix=/路径/。有些库也是相互依赖。所以这里建议最好都是使用默认安装目录，不必指定prefix;</p> <p>下面列一下必要库的下载路径，也可以去<a href="http://php.net/manual/en/funcref.php" target="_blank" rel="noopener noreferrer">http://php.net/manual/en/funcref.php<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>查找扩展库的地址</p> <p>curl: <a href="https://curl.haxx.se/download.html" target="_blank" rel="noopener noreferrer">https://curl.haxx.se/download.html<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p>mhash: <a href="https://sourceforge.net/projects/mhash/files/" target="_blank" rel="noopener noreferrer">https://sourceforge.net/projects/mhash/files/<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p>mcrypt: <a href="/pages/2017-02-10-ubuntu-安装nginx+php7+mysql/ftp://mcrypt.hellug.gr/pub/crypto/mcrypt/libmcrypt/">ftp://mcrypt.hellug.gr/pub/crypto/mcrypt/libmcrypt/</a></p> <p>openssl: <a href="https://www.openssl.org/source/" target="_blank" rel="noopener noreferrer">https://www.openssl.org/source/<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p>zlib: <a href="http://zlib.net/" target="_blank" rel="noopener noreferrer">http://zlib.net/<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p>freetype:<a href="https://sourceforge.net/projects/freetype/files/" target="_blank" rel="noopener noreferrer">https://sourceforge.net/projects/freetype/files/<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p>gd:<a href="https://github.com/libgd/libgd/releases" target="_blank" rel="noopener noreferrer">https://github.com/libgd/libgd/releases<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p>png:<a href="https://sourceforge.net/projects/libpng/files/" target="_blank" rel="noopener noreferrer">https://sourceforge.net/projects/libpng/files/<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p>jpeg:<a href="http://www.ijg.org/" target="_blank" rel="noopener noreferrer">http://www.ijg.org/<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p>安装好必要的扩展库后，./configure 就基本可以通过了，</p> <div class="language- extra-class"><pre><code>make &amp;&amp; make install
+</code></pre></div><p>这个过程可能还会报错。要具体问题具体分析。比如我遇到过找不到freetype.h,然后，我直接去/usr/local/include 目录下把freetype下的子目录全部移到include下面。</p> <p>上面编译完成后，会在/usr/local/php7目录下生成一些文件夹。</p> <p>进入php7目录</p> <div class="language- extra-class"><pre><code>cd /usr/local/php7
+</code></pre></div><p>复制配置文件，文件在etc目录下</p> <div class="language- extra-class"><pre><code>cp ./etc/php-fpm.conf.default ./etc/php-fpm.conf
+</code></pre></div><p>复制www.conf文件，文件在etc/php-fpm.d目录下</p> <div class="language- extra-class"><pre><code>cp ./etc/php-fpm.d/www.conf.default ./etc/php-fpm.d/www.conf
+</code></pre></div><p>复制php.ini到lib目录</p> <div class="language- extra-class"><pre><code>cp ./php-7.1.2/php.ini-development ./lib/php.ini
+</code></pre></div><p>查看php版本</p> <div class="language- extra-class"><pre><code>./bin/php -v
+</code></pre></div><p>软链php-fpm</p> <div class="language- extra-class"><pre><code>ln ./sbin/php-fpm /usr/local/bin
+</code></pre></div><p>启动php-fpm</p> <div class="language- extra-class"><pre><code>php-fpm
+</code></pre></div><p>修改php.ini文件，需要重启php-fpm，可以使用下面命令重启，</p> <p>先关闭所有php-fpm</p> <div class="language- extra-class"><pre><code>killall php-fpm
+</code></pre></div><p>再运行php-fpm命令</p> <div class="language- extra-class"><pre><code>php-fpm
+</code></pre></div><h2 id="安装mysql"><a href="#安装mysql" class="header-anchor">#</a> 安装mysql</h2> <p>可以直接去官网下载deb包，然后用dpkg -i *.deb来安装</p> <p><a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener noreferrer">https://dev.mysql.com/downloads/mysql/<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p>这里直接使用apt-get install 方式安装</p> <div class="language- extra-class"><pre><code>apt-get install mysql-server
+</code></pre></div><p>安装完后会提示设置密码</p> <p>可以使用service指令来重启或者关闭mysql，mysql的配置文件在 /etc/mysql</p> <p><code>service mysql restart</code> //重启mysql
+这里列一下mysql创建用户权限问题</p> <p>先登录mysql</p> <div class="language- extra-class"><pre><code>mysql -u root -p
+</code></pre></div><p>输入密码，就可以进入mysql命令行了</p> <p>查看mysql的用户列表</p> <div class="language- extra-class"><pre><code>select user,host from mysql.user;
+</code></pre></div><p>设置用户权限，这里新建一个root用户，把host设置为%，这样就可以远程连接服务器上的mysql</p> <p>这里设置了一个用户名为root1,密码为password，host是‘%’的用户，并赋予了所有数据库的所有权限。</p> <div class="language- extra-class"><pre><code>grant all privileges on *.* to user@'%' identified by ‘password’;
+</code></pre></div><p>刷新权限</p> <div class="language- extra-class"><pre><code>flush privileges
+</code></pre></div><p>可以用show grants来查看某个用户的权限</p> <div class="language- extra-class"><pre><code>show grants for root1@'%';
+</code></pre></div></div></div> <div class="page-edit"><!----> <div class="tags"><a href="/tags/?tag=Linux" title="标签">
+      #Linux
+    </a></div> <!----></div> <div class="page-nav-wapper"><!----> <!----></div></div> <div class="article-list"><div class="article-title"><a href="/archives/" class="iconfont icon-shizhong">最近更新</a></div> <div class="article-wrapper"><dl><dd>01</dd> <dt><a href="/pages/2020-05-22-linux上安装nginx及配置/"><div>linux上安装nginx及配置</div></a> <span>05-22</span></dt></dl><dl><dd>02</dd> <dt><a href="/pages/2019-06-08-web前端知识结构整理/"><div>web前端知识结构整理</div></a> <span>06-08</span></dt></dl><dl><dd>03</dd> <dt><a href="/pages/2018-06-08-css面试题汇总/"><div>css面试题汇总</div></a> <span>06-08</span></dt></dl> <dl><dd></dd> <dt><a href="/archives/" class="more">更多文章&gt;</a></dt></dl></div></div> </main></div> <div class="footer"><div class="icons"><a href="https://github.com/yufeng-ltx" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="https://twitter.com/yufeng_ltx" title="twitter" target="_blank" class="iconfont icon-twitter"></a><a href="mailto:yufeng.ltx@gmail.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a></div> 
+  Theme by <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+     | Copyright © 2017-2021
+    <span>yufeng-ltx | MIT License</span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.398f7d92.js" defer></script><script src="/assets/js/2.9c282f9a.js" defer></script><script src="/assets/js/8.a04400b5.js" defer></script>
+  </body>
+</html>
